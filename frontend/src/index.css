@@ -1,0 +1,444 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #AACBC4;
+}
+
+a {
+  text-decoration: none;
+  color: #1c191a;
+}
+
+.Enter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  width: 100%;
+  height: 100vh;
+  background-color: #1c191a;
+  color: #F1F7F6;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #AACBC4;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #17876D;
+  color: #1c191a;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #AACBC4;
+  color: #17876D;
+}
+
+.Budget {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  width: 100%;
+  height: 100vh;
+  gap: 10px;
+}
+
+.Budget-header {
+  background-color: #1c191a;
+  width: 100%;
+}
+
+.Budget-intro {
+  width: fit-content;;
+  padding: 20px;
+  color: #17876D;
+  background-color: #AACBC4;
+  border-radius: 20px 20px 0 0;
+  margin-left: 20px;
+}
+
+.bills-container {
+  display: block;
+}
+
+.bill-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+}
+
+.Bill, .Income {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 25px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  margin: 10px;
+  width: 500px;
+}
+
+.dateFormat {
+  color: #F1F7F6;
+}
+
+.Bill {
+  color: #F1F7F6;
+  background-color: #1c191a;
+}
+
+.Income {
+  color: #F1F7F6;
+  background-color: #095544;
+}
+
+.Bill-name p, .Income-name p {
+  font-size: small;
+  color: #17876D;
+}
+
+.Income-name p {
+  font-size: small;
+  color: #1c191a;
+}
+
+.headerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  background-color: #1c191a;
+  color: #F1F7F6;
+}
+
+.headerNav a {
+  color: #F1F7F6;
+}
+
+.divider {
+  margin-top: -14px;
+}
+
+.tac {
+  text-align: center;
+}
+
+.bold {
+  font-weight: regular;
+  font-size: 16px;
+}
+
+.number {
+  font-size: 25px;
+}
+
+.regularHeader {
+  margin: 20px;
+  padding: 10px;
+}
+
+.Bill-delete {
+  width: fit-content;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.sideNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sideNavLink {
+  text-decoration: none;
+  background-color: #1c191a;
+  color: #F1F7F6;
+  border: 1px solid #AACBC4;
+  padding: 10px;
+}
+
+.on-click {
+  background-color: #AACBC4;
+  color: #1c191a;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.open-form-btn {
+  background-color: #17876D;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+.open-form-btn:hover {
+  border: 2px solid #17876D;
+  color: #17876D;
+}
+
+.bills-header {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
+  padding: 20px;
+  margin: 20px;
+}
+
+.bills-header h2 {
+  grid-column: 2;
+}
+
+.bills-header button {
+  grid-column: 3;
+}
+
+.transaction-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  border: 2px solid #17876D;
+  border-radius: 10px;
+  margin: 10px;
+  width: 400px;
+}
+
+.transaction-dateFormat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.transaction-dateFormat p {
+  margin-right: 10px;
+}
+
+/* Step 1: Make the summary layout nice */
+summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  list-style: none; /* This removes the default triangle */
+}
+
+/* Step 2: Remove browser's triangle */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.expense-details {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  padding: 20px;
+  width: 100%;
+}
+
+.transaction-header {
+  margin-bottom: -10px;
+}
+
+*{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* Table Styles */
+
+.budget-goals-container{
+  margin: 10px 70px 70px;
+  
+}
+
+.budget-goals-container h2, .budget-goals-container p {
+  margin: 10px;
+}
+
+.budget-goals-table {
+  box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: #AACBC4;
+}
+
+.budget-goals-table td, .budget-goals-table th {
+  text-align: center;
+  padding: 8px;
+}
+
+.budget-goals-table td {
+  border-right: 1px solid #17876D;
+  font-size: 12px;
+}
+
+.home-container {
+  margin: 30px;
+}
+
+.header2 {
+  margin-top: 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.budget-goals-table thead th {
+  color: #1c191a;
+  background: #17876D;
+}
+
+
+.budget-goals-table thead th:nth-child(1) {
+  color: #ffffff;
+  background: #1c191a;
+}
+
+.budget-goals-table tr:nth-child(even) {
+  background: #F8F8F8;
+}
+
+/* Container for the summary */
+.summary-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+/* Title */
+.tac {
+  text-align: center;
+}
+
+/* Card Styles */
+.summary-card {
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  height: 130px;
+  width: 300px;
+}
+
+/* Card hover effect */
+.summary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Highlight card style (for more emphasis) */
+.highlight-card {
+  background-color: #96BBB3;
+  border-left: 5px solid #17876D;  /* Accent border */
+  padding-left: 15px;
+}
+
+.summary-card h2 {
+  font-size: 22px;
+  color: #1c191a;
+  margin-bottom: 8px;
+}
+
+.summary-card p {
+  font-size: 14px;
+  color: #1c191a;
+  font-style: italic;
+}
+
+/* Icon styling */
+.summary-card i {
+  font-size: 30px;
+  color: #17876D;
+  margin-right: 10px;
+}
