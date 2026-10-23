@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Paycheck planner</title>
+  <meta name="description" content="Weekly paycheck planner for bills, card payments, and leftover money. Saved in this browser, with a CSV backup.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Weekly paycheck plan</p>
+        <h1>What to set aside, what to keep, what is left</h1>
+        <p class="lede">
+          Each bill is split across the weeks between its due dates. One slice comes out of each paycheck.
+          A bill due sooner has more weeks already counted, so the account should be holding more of it.
+          Everything is saved in this browser.
+        </p>
+      </div>
+      <div class="top-actions">
+        <button type="button" class="button secondary" id="load-example">Load example</button>
+        <button type="button" class="button secondary" id="download-csv">Download CSV</button>
+        <button type="button" class="button secondary" id="upload-csv">Upload CSV</button>
+        <input id="csv-file" type="file" accept=".csv,text/csv" hidden>
+        <button type="button" class="button ghost" id="clear-all">Clear</button>
+      </div>
+    </header>
+    <p id="backup-message" class="backup-message" hidden></p>
+    <div id="layout" class="layout">
+      <main id="plan" class="plan" aria-live="polite"></main>
+      <aside class="editors">
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+
+        <section>
+          <h2>Bills</h2>
+          <form id="bill-form">
+            <label>
+              Name
+              <input id="bill-name" autocomplete="off">
+            </label>
+            <label>
+              Amount
+              <input id="bill-amount" type="number" min="0.01" step="0.01" inputmode="decimal">
+            </label>
+            <label>
+              Due date
+              <input id="bill-due" type="date">
+            </label>
+            <p id="bill-help" class="field-help">Repeats on this day each month.</p>
+            <label>
+              How often
+              <select id="bill-frequency">
+                <option value="weekly">Weekly</option>
+                <option value="biweekly">Biweekly</option>
+                <option value="monthly" selected>Monthly</option>
+              </select>
+            </label>
+            <label>
+              Paid from
+              <select id="bill-pay-from">
+                <option value="checking">Checking</option>
+              </select>
+            </label>
+            <p class="field-help">Checking pays the bill on the due date. A card is charged then, and you pay the card on the card’s due day.</p>
+            <div class="form-actions">
+              <button type="submit" class="button" id="bill-submit">Add bill</button>
+              <button type="button" class="button ghost" id="bill-cancel" hidden>Cancel</button>
+            </div>
+          </form>
+          <ul id="bill-list" class="saved"></ul>
+        </section>
+
+        <section>
+          <h2>Income</h2>
+          <form id="income-form">
+            <label>
+              Name
+              <input id="income-name" autocomplete="off">
+            </label>
+            <label>
+              Amount
+              <input id="income-amount" type="number" min="0.01" step="0.01" inputmode="decimal">
+            </label>
+            <label>
+              <span id="income-date-label">A pay date</span>
+              <input id="income-date" type="date">
+            </label>
+            <p id="income-help" class="field-help">Repeats every 7 days from this date.</p>
+            <label>
+              How often
+              <select id="income-frequency">
+                <option value="weekly" selected>Weekly</option>
+                <option value="biweekly">Biweekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="once">One-time</option>
+              </select>
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="button" id="income-submit">Add income</button>
+              <button type="button" class="button ghost" id="income-cancel" hidden>Cancel</button>
+            </div>
+          </form>
+          <ul id="income-list" class="saved"></ul>
+        </section>
+
+        <section>
+          <h2>Credit cards</h2>
+          <form id="card-form">
+            <label>
+              Name
+              <input id="card-name" autocomplete="off">
+            </label>
+            <label>
+              Payment due day
+              <input id="card-due-day" type="number" min="1" max="31" step="1">
+            </label>
+            <p class="field-help">The day of the month you pay this card. Charges since the last payment are added together.</p>
+            <div class="form-actions">
+              <button type="submit" class="button" id="card-submit">Add card</button>
+              <button type="button" class="button ghost" id="card-cancel" hidden>Cancel</button>
+            </div>
+          </form>
+          <ul id="card-list" class="saved"></ul>
+        </section>
+
+        <section>
+          <h2>Week starts</h2>
+          <label>
+            First day of your week
+            <select id="week-start"></select>
+          </label>
+          <p class="field-help">A new slice is counted when this day arrives. Set it to your payday if you plan paycheck to paycheck.</p>
+        </section>
+      </aside>
+    </div>
+    <footer class="footer">
+      <p>Saved in this browser only. Download a CSV before you clear this browser or move to another computer, then upload that file to restore the same bills, income, and cards.</p>
+    </footer>
+  </div>
+  <noscript>
+    <p>This planner needs JavaScript. Your bills stay in this browser and are not sent to a server.</p>
+  </noscript>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
